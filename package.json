@@ -1,0 +1,30 @@
+{
+  "name": "react_todolist",
+  "version": "1.0.0",
+  "description": "React Pratice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ceall8650/react_ToDoList.git"
+  },
+  "keywords": [
+    "react",
+    "todolist"
+  ],
+  "author": "ceall8650",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ceall8650/react_ToDoList/issues"
+  },
+  "homepage": "https://github.com/Ceall8650/react_ToDoList#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "webpack": "^3.2.0"
+  }
+}
