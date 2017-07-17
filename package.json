@@ -4,7 +4,8 @@
   "description": "React Pratice",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/eslint webpack.config.js"
+    "test": "standard",
+    "dev": "standard && webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -26,12 +27,17 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "eslint": "^4.2.0",
-    "eslint-config-airbnb": "^15.0.2",
+    "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "path": "^0.12.7",
+    "standard": "^10.0.2",
     "webpack": "^3.2.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": []
   }
 }
