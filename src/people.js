@@ -1,6 +1,6 @@
 const people = [{
   manager: 'Jen',
-  name: 'Bob'
+  name: 'Bob2'
 }, {
   manager: 'Jen',
   name: 'Sue'

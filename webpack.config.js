@@ -5,6 +5,8 @@ const extractCommons = new webpack.optimize.CommonsChunkPlugin({
   name: 'common',
   filename: 'common.js'
 })
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const extractCSS = new ExtractTextPlugin('[name].build.css')
 
 const config = {
   /**
@@ -36,7 +38,8 @@ const config = {
    */
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].build.js'
+    filename: '[name].build.js',
+    publicPath: '/dist/' // 讓網址保持: http://example.com/dist/dashboard.js
   },
   /**
    * loaders 對應使用規則
@@ -61,6 +64,7 @@ const config = {
       },
       {
         test: /\.scss$/,
+        // loader: extractCSS.extract(['css-loader', 'sass-loader'])
         /**
          * use 屬性是用來套用，串接多個 loaders。
          * v2 為了相容的因素保留 loaders 屬性，loaders 為 use 的別名，
@@ -89,7 +93,9 @@ const config = {
     ]
   },
   plugins: [
-    extractCommons
+    extractCommons,
+    extractCSS,
+    new webpack.NamedModulesPlugin()
   ]
 }
 

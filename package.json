@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "standard",
-    "dev": "standard && webpack --watch",
+    "dev": "standard && webpack-dev-server --inline --open --hot",
     "build": "webpack -p"
   },
   "repository": {
@@ -33,11 +33,13 @@
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.4",
+    "d3": "^4.10.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "node-sass": "^4.5.3",
     "path": "^0.12.7",
@@ -45,7 +47,8 @@
     "standard": "^10.0.2",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
-    "webpack": "^2.7.0"
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
   },
   "standard": {
     "parser": "babel-eslint",
