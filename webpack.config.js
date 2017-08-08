@@ -1,12 +1,23 @@
 const path = require('path')
 const webpack = require('webpack')
 
+// 將多個 Entry point 中共用模組的部分抽出來獨立成一個模組。
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractCommons = new webpack.optimize.CommonsChunkPlugin({
   name: 'common',
   filename: 'common.js'
 })
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractCSS = new ExtractTextPlugin('[name].build.css')
+
+/**
+ * 這邊使用 HtmlWebpackPlugin，將 bundle 好得 <script> 插入到 body  
+ * const HtmlWebpackPlugin = require('html-webpack-plugin')
+ * const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+ *   template: `${__dirname}/index.html`,
+ *   filename: 'index.html',
+ *   inject: 'body',
+ * })
+ */
 
 const config = {
   /**
@@ -29,16 +40,21 @@ const config = {
    * Entry point
    * 因為設定了 context 所以不需要加上 src/ 了
    */
-  entry: {
-    app: './app.js',
-    admin: './admin.js'
-  },
+  entry: './app.js',
+  /** 
+   * 多個 Entry point的設定方式
+   * entry: {
+   *   app: './app.js'
+   * },
+   */
   /**
    * 輸出路徑與檔名
    */
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].build.js',
+    filename: 'bundle.js',
+    // 多個 Entry point會output對應的檔案
+    // filename: '[name].bundle.js',
     publicPath: '/dist/' // 讓網址保持: http://example.com/dist/dashboard.js
   },
   /**
@@ -48,9 +64,9 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
+        test: /\.(js|jsx)$/,
+        exclude: [/node_modules/],
+        loader: 'babel-loader?cacheDirectory',
         options: {
           presets: [
             /* Loose mode and No native modules(Tree Shaking)
@@ -58,7 +74,8 @@ const config = {
              * loose: 提供 loose 編譯模式，該模式啟動下 Babel 會盡可能產生較精簡的 ES5 程式碼，預設 false 會盡可能產出接近 ES2015 規範的程式碼。
              * modules: 轉換 ES2015 module 的語法（import）為其它類型，預設為 true 轉換為 commonjs。
              */
-              ['es2015', { modules: false, loose: false }]
+              ['env', { modules: false, loose: false }],
+            'react'
           ]
         }
       },
@@ -93,8 +110,10 @@ const config = {
     ]
   },
   plugins: [
-    extractCommons,
+    // extractCommons,
     extractCSS,
+    // HTMLWebpackPluginConfig,
+    // 在HRM模式下, 可以在瀏覽器的 console 看出是哪個檔案更新
     new webpack.NamedModulesPlugin()
   ]
 }
