@@ -5,7 +5,9 @@ import ReactDOM from 'react-dom'
 class App extends React.Component {
   // render 是 Class based 元件唯一必須的方法（method）
   render () {
-    return (<div>hello</div>)
+    return (
+      <div>hello</div>
+    )
   }
 }
 ReactDOM.render(<App />, document.getElementById('app'))

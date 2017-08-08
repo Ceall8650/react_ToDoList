@@ -1,7 +1,7 @@
 # react_ToDoList
 React Practice
 	
-#封裝打包專案
+# 封裝打包專案
 $ npm run bulid
 
 # 建立本地端server
