@@ -8,8 +8,8 @@ $ npm run bulid
 $ npm start
 
 # 啟動說明
-standard --fix: 自動修復寫coding sytle不符合standard style的錯誤
-webpack-dev-server: 建立local server
+  * standard --fix: 自動修復寫coding sytle不符合standard style的錯誤
+  * webpack-dev-server: 建立local server
 # webpack-dev-server的設定參數選項
   * --content-base: 指定專案目錄
   * --quiet: 不要輸出任何資訊到 console
